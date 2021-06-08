@@ -22,4 +22,4 @@ test_script:
 
 
 # Don't actually build.
-build_script: off
+build: off
