@@ -1,4 +1,17 @@
-# Test against this version of Node.js
+#Appveyor msbuild response file
+
+# No Banner
+/nologo
+# We just want errors displayed
+/ConsoleLoggerParameters:NoSummary;Verbosity=quiet
+# Log to a file and set options
+/filelogger
+/fileloggerparameters:Verbosity=detailed
+/bl
+# uncomment below to also include paramaters from @additionalswitches.rsp
+# @additionalswitches.rsp
+
+#Test against this version of Node.js
 environmet:
   matrix:
     #node.js
@@ -23,4 +36,3 @@ test_script:
 
 # Don't actually build.
 build: off
-
