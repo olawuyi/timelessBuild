@@ -1,9 +1,9 @@
 
 # Test against this version of Node.js
 environment:
+  environment:
   matrix:
-    #node.js
-    nodejs_version: "14"
+    - nodejs_version: "14"
 
 # Install scripts. (runs after repo cloning)
 install:
