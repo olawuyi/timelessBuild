@@ -19,6 +19,8 @@ test_script:
   - node --version
   - npm --version
   # run tests
+  # uncomment the line below later
+  #- npm test
 
 # Don't actually build.
 build: off
