@@ -1,15 +1,18 @@
-import jsf from 'json-schema-faker'
 import { schema } from './mockDataSchema';
-import fs from 'fs';
 import chalk from 'chalk';
 
+const {resolve, extend} = require('json-schema-faker');
+const fs = require('fs');
+extend('faker', () => require('faker'));
 
-const json = JSON.stringify(jsf(schema));
 
-fs.writeFile("./src/api/db.json", json, function (error) {
-	if (err) {
-		return console.log(chalk.red(err));
-	} else {
-		console.log(chalk.green("Mock Data generated"));
-	}
-})
+resolve(schema).then(sample => {
+        console.log('Writing to db.json')
+        fs.writeFile("./src/api/db.json", JSON.stringify(sample), function(err) {
+          if(err) {
+                return console.log(chalk.red(err));
+          } else {
+                console.log(chalk.green("Mock Data generated"));
+          }
+        });
+      });
