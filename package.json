@@ -4,7 +4,7 @@
   "description": "timelessBuild by oyeshola",
   "scripts": {
     "prestart": "babel-node buildScripts/startMessage.js",
-    "start": "npm-run-all --parallel open:src lint:watch share",
+    "start": "npm-run-all --parallel open:src lint:watch test:watch  share start-mockapi",
     "open:src": "babel-node buildScripts/srcServer.js",
     "localtunnel": "lt --port 3000",
     "share": "npm run localtunnel",
@@ -13,7 +13,9 @@
     "security-check": "nsp check",
     "test": "mocha --reporter progress buildScripts/testSetup.js \"src/**/*.test.js\"",
     "test:watch": "npm run test -- --watch",
-    "generate-mock-data": "babel-node buildscripts/generateMockData"
+    "generate-mock-data": "babel-node buildscripts/generateMockData",
+    "prestart-mockapi": "npm run generate-mock-data",
+    "start-mockapi": "json-server --watch src/api/db.json --port 3001"
   },
   "author": "oyeshola",
   "license": "MIT",
